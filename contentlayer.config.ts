@@ -35,6 +35,16 @@ export const Personal = defineDocumentType(() => ({
       description: 'Your Twitter username without the "@" symbol',
       required: false,
     },
+    phone: {
+      type: 'string',
+      description: 'Your phone',
+      required: false,
+    },
+    email: {
+      type: 'string',
+      description: 'Your email',
+      required: false,
+    },
   },
 }));
 
@@ -121,9 +131,9 @@ export const Achievement = defineDocumentType(() => ({
       required: true,
     },
     completionYear: {
-      type: 'number',
+      type: 'string',
       description: 'The year you earned your achievement',
-      required: true,
+      required: false,
     },
   },
 }));
