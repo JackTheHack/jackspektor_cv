@@ -3,6 +3,8 @@ givenName: Jack
 familyName: Spektor
 title: Sitecore Technical Lead
 location: Auckland, NZ
+phone: +64 22 0193329
+email: jack.spektor@gmail.com
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices in iaculis nunc sed augue lacus viverra vitae congue. Neque viverra [justo nec ultrices](#). Urna nunc id cursus metus aliquam eleifend mi in nulla. Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra.
+Full Stack .Net Developer with more than 14 years of experience in IT. 5 times awarded as Sitecore MVP professional. I have excellent knowledge in .NET technology stack, as well as experienced in JAMStack and transitioning of traditional systems to JAMStack. Pro-active, target-oriented, communicative and reliable. I like to share knowledge and never stop learning.

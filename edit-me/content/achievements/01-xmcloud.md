@@ -4,4 +4,4 @@ organization: Sitecore
 completionYear: 2024
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices in iaculis nunc sed augue lacus viverra vitae congue. Neque viverra justo nec ultrices. Urna nunc id cursus metus aliquam eleifend mi in nulla. Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra. Tristique senectus et netus et malesuada fames ac.
+Passed Sitecore XM Cloud certification that certifies knowledge in building JAMStack applications using Sitecore new XM Cloud SaaS offering.

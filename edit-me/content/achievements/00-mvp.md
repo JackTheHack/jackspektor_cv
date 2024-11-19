@@ -1,7 +1,9 @@
 ---
 achievement: Sitecore MVP
 organization: Sitecore
-completionYear: 2023
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices in iaculis nunc sed augue lacus viverra vitae congue. Neque viverra justo nec ultrices. Urna nunc id cursus metus aliquam eleifend mi in nulla. Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra. Tristique senectus et netus et malesuada fames ac.
+For regular contributions to Sitecore CMS developer community I was awarded with Sitecore MVP status by Sitecore. So far only 4 developers have been awarded with such status in New Zealand.
+
+Technology Sitecore MVP 2018, 2019, 2021, 2024
+Commerce Sitecore MVP 2020
