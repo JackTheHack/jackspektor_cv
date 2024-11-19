@@ -40,6 +40,11 @@ export const Personal = defineDocumentType(() => ({
       description: 'Your phone',
       required: false,
     },
+    website: {
+      type: 'string',
+      description: 'Your website',
+      required: false,
+    },
     email: {
       type: 'string',
       description: 'Your email',

@@ -12,6 +12,7 @@ import {
   Page,
   StyleSheet,
   Text,
+  Link,
   View,
 } from '@react-pdf/renderer';
 import { HtmlProps } from 'node_modules/react-pdf-html/dist/types/Html';
@@ -318,9 +319,21 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
                 <CircleIdCard size={fontSizes.m} />
                 <Text>Contact Information</Text>
               </View>
-              <View style={styles.flexRow}>
+              <View style={styles.flexRow} >
                 <Text style={styles.bold}>Location:</Text>
-                <Text>&nbsp;{personal.location}</Text>
+                <Text>&nbsp;{personal.location}</Text>                
+              </View>              
+              <View style={styles.flexRow}>
+                <Text style={styles.bold}>Phone:</Text>
+                <Text>&nbsp;{personal.phone}</Text>
+              </View>
+              <View style={styles.flexRow}>
+                <Text style={styles.bold}>Email:</Text>
+                <Text>&nbsp;{personal.email}</Text>
+              </View>
+              <View style={styles.flexRow} >
+                <Text style={styles.bold}>Website:&nbsp;</Text>
+                <Link>{personal.website}</Link>                
               </View>
               {privateInformation?.map((privateField) => (
                 <View key={privateField._id}>
@@ -352,14 +365,14 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
             </View>
           </View>
         </View>
-        <View style={styles.main}>
+        <View style={styles.main} wrap>
           <View style={styles.section}>
             <View style={styles.sectionHeading}>
               <CircleBriefcase size={fontSizes.m} />
               <Text>Professional Experience</Text>
             </View>
             {sortedProfessionalExperiences.map((professionalExperience) => (
-              <View key={professionalExperience._id}>
+              <View key={professionalExperience._id} wrap={false}>
                 <View style={styles.itemHeading}>
                   <Text style={styles.professionalTitle}>
                     {professionalExperience.title}
@@ -372,8 +385,8 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
                 <Html {...htmlProps}>{professionalExperience.body.html}</Html>
               </View>
             ))}
-          </View>
-          <View style={styles.section}>
+          </View>                    
+          <View style={styles.section} break={true} wrap={false}>
             <View style={styles.sectionHeading}>
               <CircleGraduationCap size={fontSizes.m} />
               <Text>Achievements</Text>
@@ -389,7 +402,7 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
                     {achievement.organization}
                   </Text>
                 </View>
-                <Html {...htmlProps}>{achievement.body.html}</Html>
+                <Text>{achievement.body.raw}</Text>                            
               </View>
             ))}
           </View>
@@ -398,15 +411,7 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
               <CirclePaintbrush size={fontSizes.m} />
               <Text>{additionalInfo.title}</Text>
             </View>
-            <Html
-              {...htmlProps}
-              stylesheet={{
-                ...htmlProps.stylesheet,
-                p: { marginBottom: spacers[1] },
-              }}
-            >
-              {additionalInfo.body.html}
-            </Html>
+            <Text>{additionalInfo.body.raw}</Text>            
           </View>
         </View>
       </Page>
