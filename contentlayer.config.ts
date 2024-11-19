@@ -131,7 +131,7 @@ export const Achievement = defineDocumentType(() => ({
       required: true,
     },
     completionYear: {
-      type: 'string',
+      type: 'number',
       description: 'The year you earned your achievement',
       required: false,
     },
