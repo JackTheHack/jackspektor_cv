@@ -21,7 +21,7 @@ const Skills: React.FC = () => {
             <Heading level={4}>
               <div className="flex items-center gap-2">
                 <StarRating
-                  stars={(allSkills.length - skillIndex) as 1 | 2 | 3}
+                  stars={(allSkills.length - skillIndex + 1) as 1 | 2 | 3}
                 />
                 {skill.title}
               </div>

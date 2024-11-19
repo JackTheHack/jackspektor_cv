@@ -338,7 +338,7 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
                 <View key={skill._id}>
                   <View style={styles.itemHeading}>
                     <View style={styles.sectionHeadingStars}>
-                      {Array.from(Array(allSkills.length - skillIndex)).map(
+                      {Array.from(Array(allSkills.length - skillIndex + 1)).map(
                         (star, starIndex) => (
                           <Star key={starIndex} size={fontSizes.xxs} />
                         ),
