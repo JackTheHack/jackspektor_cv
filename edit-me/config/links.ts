@@ -3,6 +3,7 @@ import {
   SiInstagram,
   SiLinkedin,
   SiMedium,
+  SiBluesky,
   SiX,
 } from '@icons-pack/react-simple-icons';
 import { CMSLink } from 'edit-me/types/CMSLink';
@@ -25,7 +26,7 @@ export const links: CMSLink[] = [
   },
   {
     href: 'https://bsky.app/profile/jackspektor.bsky.social',
-    icon: SiX,
+    icon: SiBluesky,
     title: 'Bluesky',
   },
 ];
