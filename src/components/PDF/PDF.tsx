@@ -365,8 +365,8 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
             </View>
           </View>
         </View>
-        <View style={styles.main} wrap>
-          <View style={styles.section}>
+        <View style={styles.main}>
+          <View style={styles.section} break>
             <View style={styles.sectionHeading}>
               <CircleBriefcase size={fontSizes.m} />
               <Text>Professional Experience</Text>

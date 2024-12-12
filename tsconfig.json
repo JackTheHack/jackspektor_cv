@@ -33,7 +33,8 @@
       ],
       "@test-utils": [
         "./src/test-utils.tsx"
-      ]
+      ],
+      "@/*": ["src/*"]
     },
     "types": [
       "bun-types"

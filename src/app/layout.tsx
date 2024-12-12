@@ -12,6 +12,9 @@ import { fullName } from 'src/helpers/utils';
 import { twMerge } from 'tailwind-merge';
 import { ThemeSetting } from '../../edit-me/types/Config';
 import './globals.css';
+import { Header } from '@/components/Header/Header'
+import { Footer } from '@/components/Footer/Footer'
+import { Toaster } from 'react-hot-toast';
 
 const accentColor = resumeConfig.accentColor;
 
@@ -68,8 +71,13 @@ export const viewport: Viewport = {
   width: 'device-width',
 };
 
-const RootLayout: React.FC<PropsWithChildren> = async ({ children }) => {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
+
     <html
       lang="en"
       className={twMerge(
@@ -79,10 +87,11 @@ const RootLayout: React.FC<PropsWithChildren> = async ({ children }) => {
       )}
     >
       <body className="bg-neutral-1 text-neutral-12 selection:bg-accent-11 selection:text-neutral-1">
+        <Header />
         {children}
+        <Footer />
+        <Toaster/>
       </body>
     </html>
-  );
-};
-
-export default RootLayout;
+  )
+}

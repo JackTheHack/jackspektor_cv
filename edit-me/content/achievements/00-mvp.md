@@ -6,5 +6,6 @@ For regular contributions to Sitecore CMS developer community I was awarded with
 
 So far only 4 developers have been awarded with such status in New Zealand.
 
+🎤 SUGCON India speaker, SUGCON ANZ speaker
 🥇 Technology Sitecore MVP 2018, 2019, 2021, 2024  
 🥇 Commerce Sitecore MVP 2020
