@@ -6,10 +6,12 @@ import {
   allSkills,
   personal,
 } from '@content';
+import profileImage from '../../../public/images/profile.png';
 import {
   Document,
   Font,
   Page,
+  Image,
   StyleSheet,
   Text,
   Link,
@@ -37,7 +39,6 @@ import { CircleIdCard } from './Icons/CircleIdCard';
 import { CirclePaintbrush } from './Icons/CirclePaintbrush';
 import { CircleUser } from './Icons/CircleUser';
 import { Star } from './Icons/Star';
-
 const theme = resumeConfig.pdfTheme;
 const albertSrc = 'https://fonts.gstatic.com/s/albertsans/v1';
 const jetbrainsSrc = 'https://fonts.gstatic.com/s/jetbrainsmono/v18';
@@ -142,7 +143,13 @@ const styles = StyleSheet.create({
     padding: `${spacers[6]} ${spacers[4]}`,
     textAlign: 'center',
   },
-  headerTitle: { fontSize: fontSizes.xl, fontWeight: 700 },
+  headerImageContainer: {
+    display: 'flex',
+    alignSelf: 'stretch',
+    alignItems: 'center',
+  },
+  headerImage: { width: 40, borderRadius: 20, alignSelf: 'center' },
+  headerTitle: { fontSize: fontSizes.xl, fontWeight: 700, marginBottom: 10 },
   headerSubtitle: { fontSize: fontSizes.m, fontWeight: 700 },
   main: {
     alignSelf: 'stretch',
@@ -153,7 +160,7 @@ const styles = StyleSheet.create({
     flexShrink: 0,
     padding: spacers[4],
   },
-  section: { marginBottom: spacers[4] },
+  section: { marginBottom: spacers[4], marginTop: spacers[2] },
   sectionHeading: {
     alignItems: 'center',
     display: 'flex',
@@ -295,128 +302,144 @@ const ProfessionalExperienceDetails: React.FC<ProfessionExperienceProps> = ({
 
 const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
   const year = new Date().getFullYear();
-
-  return (
-    // @ts-ignore
-    <Document author={fullName} title={`Resumé for ${fullName}, ${year}`}>
-      {/* @ts-ignore */}
-      <Page size="LETTER" style={styles.page}>
-        <View style={styles.sidebar}>
-          <View style={styles.header}>
-            <Text style={styles.headerTitle}>{fullName}</Text>
-            <Text style={styles.headerSubtitle}>{personal.title}</Text>
-          </View>
-          <View style={styles.sidebarContent}>
-            <View style={styles.section}>
-              <View style={styles.sectionHeadingNonHTML}>
-                <CircleUser size={fontSizes.m} />
-                <Text>About Me</Text>
+  try {
+    return (
+      // @ts-ignore
+      <Document
+        author={fullName}
+        title={`Resumé for ${fullName}, ${year}`}
+        pageLayout="singlePage"
+      >
+        {/* @ts-ignore */}
+        <Page size="A4" style={styles.page}>
+          <View style={styles.sidebar}>
+            <View style={styles.header}>
+              <View style={styles.headerImageContainer}>
+                <Image
+                  src="https://www.jackspektor.com/_next/image?url=%2Fimages%2Fprofile.jpg&w=3840&q=75"
+                  style={styles.headerImage}
+                ></Image>
               </View>
-              <Html {...htmlProps}>{personal.body.html}</Html>
+              <Text style={styles.headerTitle}>{fullName}</Text>
+              <Text style={styles.headerSubtitle}>{personal.title}</Text>
             </View>
+            <View style={styles.sidebarContent}>
+              <View style={styles.section}>
+                <View style={styles.sectionHeadingNonHTML}>
+                  <CircleUser size={fontSizes.m} />
+                  <Text>About Me</Text>
+                </View>
+
+                <Html {...htmlProps}>{personal.body.html}</Html>
+              </View>
+              <View style={styles.section}>
+                <View style={styles.sectionHeadingNonHTML}>
+                  <CircleIdCard size={fontSizes.m} />
+                  <Text>Contact Information</Text>
+                </View>
+                <View style={styles.flexRow}>
+                  <Text style={styles.bold}>Location:</Text>
+                  <Text>&nbsp;{personal.location}</Text>
+                </View>
+                <View style={styles.flexRow}>
+                  <Text style={styles.bold}>Phone:</Text>
+                  <Text>&nbsp;{personal.phone}</Text>
+                </View>
+                <View style={styles.flexRow}>
+                  <Text style={styles.bold}>Email:</Text>
+                  <Text>&nbsp;{personal.email}</Text>
+                </View>
+                <View style={styles.flexRow}>
+                  <Text style={styles.bold}>Website:&nbsp;</Text>
+                  <Link>{personal.website}</Link>
+                </View>
+                {privateInformation?.map((privateField) => (
+                  <View key={privateField._id}>
+                    <Text style={styles.bold}>{privateField.label}:&nbsp;</Text>
+                    <Html {...htmlProps}>{privateField.body.html}</Html>
+                  </View>
+                ))}
+              </View>
+              <View style={styles.section}>
+                <View style={styles.sectionHeading}>
+                  <CircleCheck size={fontSizes.m} />
+                  <Text>Skills &amp; Expertise</Text>
+                </View>
+                {allSkills.map((skill, skillIndex) => (
+                  <View key={skill._id}>
+                    <View style={styles.itemHeading}>
+                      <View style={styles.sectionHeadingStars}>
+                        {Array.from(
+                          Array(allSkills.length - skillIndex + 1),
+                        ).map((star, starIndex) => (
+                          <Star key={starIndex} size={fontSizes.xxs} />
+                        ))}
+                      </View>
+                      <Text style={styles.bold}>{skill.title}</Text>
+                    </View>
+                    <Html {...htmlProps}>{skill.body.html}</Html>
+                  </View>
+                ))}
+              </View>
+            </View>
+          </View>
+          <View style={styles.main}>
             <View style={styles.section}>
-              <View style={styles.sectionHeadingNonHTML}>
-                <CircleIdCard size={fontSizes.m} />
-                <Text>Contact Information</Text>
+              <View style={styles.sectionHeading}>
+                <CircleBriefcase size={fontSizes.m} />
+                <Text>Professional Experience</Text>
               </View>
-              <View style={styles.flexRow} >
-                <Text style={styles.bold}>Location:</Text>
-                <Text>&nbsp;{personal.location}</Text>                
-              </View>              
-              <View style={styles.flexRow}>
-                <Text style={styles.bold}>Phone:</Text>
-                <Text>&nbsp;{personal.phone}</Text>
+              {sortedProfessionalExperiences.map((professionalExperience) => (
+                <View key={professionalExperience._id} wrap={false}>
+                  <View style={styles.itemHeading}>
+                    <Text style={styles.professionalTitle}>
+                      {professionalExperience.title}
+                    </Text>
+                    <Text>&nbsp;at {professionalExperience.organization}</Text>
+                  </View>
+                  <ProfessionalExperienceDetails
+                    professionalExperience={professionalExperience}
+                  />
+                  <Html {...htmlProps}>{professionalExperience.body.html}</Html>
+                </View>
+              ))}
+            </View>
+
+            <View style={styles.section} break={true}>
+              <View style={styles.sectionHeading}>
+                <CircleGraduationCap size={fontSizes.m} />
+                <Text>Achievements</Text>
               </View>
-              <View style={styles.flexRow}>
-                <Text style={styles.bold}>Email:</Text>
-                <Text>&nbsp;{personal.email}</Text>
-              </View>
-              <View style={styles.flexRow} >
-                <Text style={styles.bold}>Website:&nbsp;</Text>
-                <Link>{personal.website}</Link>                
-              </View>
-              {privateInformation?.map((privateField) => (
-                <View key={privateField._id}>
-                  <Text style={styles.bold}>{privateField.label}:&nbsp;</Text>
-                  <Html {...htmlProps}>{privateField.body.html}</Html>
+              {sortedAchievements.map((achievement) => (
+                <View key={achievement._id}>
+                  <View style={styles.itemHeading}>
+                    <Text style={styles.bold}>{achievement.achievement}</Text>
+                  </View>
+                  <View style={styles.itemSubheadingRow}>
+                    <BuildingColumns size={fontSizes.xxs} />
+                    <Text style={styles.itemSubheading}>
+                      {achievement.organization}
+                    </Text>
+                  </View>
+                  <Text>{achievement.body.raw}</Text>
                 </View>
               ))}
             </View>
             <View style={styles.section}>
               <View style={styles.sectionHeading}>
-                <CircleCheck size={fontSizes.m} />
-                <Text>Skills &amp; Expertise</Text>
+                <CirclePaintbrush size={fontSizes.m} />
+                <Text>{additionalInfo.title}</Text>
               </View>
-              {allSkills.map((skill, skillIndex) => (
-                <View key={skill._id}>
-                  <View style={styles.itemHeading}>
-                    <View style={styles.sectionHeadingStars}>
-                      {Array.from(Array(allSkills.length - skillIndex + 1)).map(
-                        (star, starIndex) => (
-                          <Star key={starIndex} size={fontSizes.xxs} />
-                        ),
-                      )}
-                    </View>
-                    <Text style={styles.bold}>{skill.title}</Text>
-                  </View>
-                  <Html {...htmlProps}>{skill.body.html}</Html>
-                </View>
-              ))}
+              <Text>{additionalInfo.body.raw}</Text>
             </View>
           </View>
-        </View>
-        <View style={styles.main}>
-          <View style={styles.section} break>
-            <View style={styles.sectionHeading}>
-              <CircleBriefcase size={fontSizes.m} />
-              <Text>Professional Experience</Text>
-            </View>
-            {sortedProfessionalExperiences.map((professionalExperience) => (
-              <View key={professionalExperience._id} wrap={false}>
-                <View style={styles.itemHeading}>
-                  <Text style={styles.professionalTitle}>
-                    {professionalExperience.title}
-                  </Text>
-                  <Text>&nbsp;at {professionalExperience.organization}</Text>
-                </View>
-                <ProfessionalExperienceDetails
-                  professionalExperience={professionalExperience}
-                />
-                <Html {...htmlProps}>{professionalExperience.body.html}</Html>
-              </View>
-            ))}
-          </View>                    
-          <View style={styles.section} break={true} wrap={false}>
-            <View style={styles.sectionHeading}>
-              <CircleGraduationCap size={fontSizes.m} />
-              <Text>Achievements</Text>
-            </View>
-            {sortedAchievements.map((achievement) => (
-              <View key={achievement._id}>
-                <View style={styles.itemHeading}>
-                  <Text style={styles.bold}>{achievement.achievement}</Text>
-                </View>
-                <View style={styles.itemSubheadingRow}>
-                  <BuildingColumns size={fontSizes.xxs} />
-                  <Text style={styles.itemSubheading}>
-                    {achievement.organization}
-                  </Text>
-                </View>
-                <Text>{achievement.body.raw}</Text>                            
-              </View>
-            ))}
-          </View>
-          <View style={styles.section}>
-            <View style={styles.sectionHeading}>
-              <CirclePaintbrush size={fontSizes.m} />
-              <Text>{additionalInfo.title}</Text>
-            </View>
-            <Text>{additionalInfo.body.raw}</Text>            
-          </View>
-        </View>
-      </Page>
-    </Document>
-  );
+        </Page>
+      </Document>
+    );
+  } catch (error) {
+    console.error('PDF Generation Error:', error);
+    return <Text>Unable to generate PDF</Text>;
+  }
 };
 
 export default PDF;

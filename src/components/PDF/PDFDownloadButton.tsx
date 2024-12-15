@@ -1,35 +1,23 @@
-import { DocumentIcon } from '@heroicons/react/24/solid';
-import {saveAs} from 'file-saver'
 import React from 'react';
-import ButtonLink from '../Button/ButtonLink';
+import { twMerge } from 'tailwind-merge';
+import { buttonVariants } from '../Button/Button';
 import toast from 'react-hot-toast';
 
 interface PDFDownloadButtonProps {
   secret?: string;
 }
 
-
-
 const PDFDownloadButton: React.FC<PDFDownloadButtonProps> = ({ secret }) => {
-
-  const saveFile = (secret:string) => {
-
-    toast("Downloading CV...");
-
-    saveAs(
-      `${secret ? `/api/pdf?secret=${secret}` : '/api/pdf'}`,
-      "JackSpektorCV.pdf"
-    );
-  };
-
   return (
-    <ButtonLink
-      onClick={() => saveFile(secret || '')}
+    <a
+      onClick={() => toast('Downloading CV...')}
+      target="_blank"
       href={`${secret ? `/api/pdf?secret=${secret}` : '/api/pdf'}`}
-      size="lg"
+      className={twMerge(buttonVariants({ size: 'lg' }))}
+      download={'JackSpektorCV.pdf'}
     >
-     Download CV
-    </ButtonLink>
+      Download CV
+    </a>
   );
 };
 
