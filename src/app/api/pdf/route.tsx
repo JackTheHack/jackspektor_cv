@@ -24,6 +24,8 @@ export async function GET(request: Request) {
   return new NextResponse(pdfStream, {
     headers: {
       'Content-Type': 'application/pdf',
+      'Netlify-CDN-Cache-Control':
+        'public, durable, max-age=60, stale-while-revalidate=120',
     },
   });
 }
