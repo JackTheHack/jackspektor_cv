@@ -54,8 +54,28 @@ function TopMenu() {
 
   const { push } = useRouter();
 
-  const handleLinkClick = () => {
-    push('/expertise');
+  const navigateExpertise = (path: string) => {
+    if (!path || path.length == 0) {
+      push('/expertise');
+    }
+
+    switch (path) {
+      case 'reactnative':
+        push('/expertise/reactnative');
+        break;
+      case 'nextjs':
+        push('/expertise/nextjs');
+        break;
+      case 'dotnet':
+        push('/expertise/dotnet');
+        break;
+      case 'sitecore':
+        push('/expertise/sitecore');
+        break;
+      default:
+        push('/not-found');
+        break;
+    }
   };
 
   return (
@@ -75,7 +95,7 @@ function TopMenu() {
               >
                 <MenuButton
                   as="a"
-                  onClick={handleLinkClick}
+                  onClick={() => navigateExpertise('')}
                   className="cursor-pointer"
                 >
                   <div className="inline-flex items-center gap-1">
@@ -98,25 +118,37 @@ function TopMenu() {
                       className="absolute left-0 mt-2 w-80 origin-top-left rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-gray-700"
                     >
                       <MenuItem>
-                        <button className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                        <button
+                          className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                          onClick={() => navigateExpertise('sitecore')}
+                        >
                           <PencilIcon className="size-4 text-gray-400 dark:text-gray-500" />
                           Sitecore CMS
                         </button>
                       </MenuItem>
                       <MenuItem>
-                        <button className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                        <button
+                          className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                          onClick={() => navigateExpertise('dotnet')}
+                        >
                           <ArchiveBoxXMarkIcon className="size-4 text-gray-400 dark:text-gray-500" />
                           .NET Framework
                         </button>
                       </MenuItem>
                       <MenuItem>
-                        <button className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                        <button
+                          className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                          onClick={() => navigateExpertise('nextjs')}
+                        >
                           <Square2StackIcon className="size-4 text-gray-400 dark:text-gray-500" />
                           NextJS / React / JAMStack
                         </button>
                       </MenuItem>
                       <MenuItem>
-                        <button className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                        <button
+                          className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                          onClick={() => navigateExpertise('reactnative')}
+                        >
                           <TrashIcon className="size-4 text-gray-400 dark:text-gray-500" />
                           React Native
                         </button>

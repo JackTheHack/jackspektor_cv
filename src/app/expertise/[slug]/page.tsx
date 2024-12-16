@@ -1,6 +1,11 @@
+'use client';
+
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function ExpertiseDetailsPage() {
+  const pathName = usePathname();
+
   return (
     <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <div className="container mx-auto px-4 py-12">
@@ -8,7 +13,7 @@ export default function ExpertiseDetailsPage() {
           <h1 className="mb-4 text-4xl font-bold">Business Consulting</h1>
           <p className="max-w-2xl text-xl">
             We provide expert business consulting services to help your company
-            grow and succeed in today`s competitive market.
+            grow and succeed in today`s competitive market. `${pathName}`
           </p>
         </div>
 
