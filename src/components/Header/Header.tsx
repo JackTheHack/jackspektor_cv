@@ -5,6 +5,7 @@ import { personal } from '@content';
 import {
   ChevronDownIcon,
   PhoneIcon,
+  RssIcon,
   PlayCircleIcon,
 } from '@heroicons/react/20/solid';
 import React, { useState, useRef } from 'react';
@@ -12,6 +13,7 @@ import { fullName } from '../../helpers/utils';
 import { Heading } from '../Heading/Heading';
 import PDFDownloadButton from '../PDF/PDFDownloadButton';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface HeaderProps {
   secret?: string;
@@ -47,8 +49,10 @@ function TopMenu() {
     }, 300); // 300ms delay before closing
   };
 
+  const { push } = useRouter();
+
   const handleLinkClick = () => {
-    setIsOpen(!isOpen);
+    push('/expertise');
   };
 
   return (
@@ -68,8 +72,8 @@ function TopMenu() {
               >
                 <MenuButton
                   as="a"
-                  className="cursor-pointer"
                   onClick={handleLinkClick}
+                  className="cursor-pointer"
                 >
                   <div className="inline-flex items-center gap-1">
                     <span className="underline decoration-blue-9 transition-colors duration-300 hover:decoration-white">
@@ -119,6 +123,8 @@ function TopMenu() {
                 )}
               </Menu>
 
+              <Link href="/blog">Blog</Link>
+
               <Link href="/contact">Contact</Link>
             </div>
           </div>
@@ -141,6 +147,14 @@ function TopMenu() {
         >
           <AcademicCapIcon className="size-5 text-gray-400 dark:text-gray-500" />
           Expertise
+        </Link>
+
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+        >
+          <RssIcon className="size-5 text-gray-400 dark:text-gray-500" />
+          Blog
         </Link>
 
         <Link
