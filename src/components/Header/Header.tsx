@@ -55,8 +55,9 @@ function TopMenu() {
   const { push } = useRouter();
 
   const navigateExpertise = (path: string) => {
-    if (!path || path.length == 0) {
+    if (!path || path.length == 0 || path == '') {
       push('/expertise');
+      return;
     }
 
     switch (path) {
