@@ -79,11 +79,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={twMerge(
-        albert.variable,
-        jetBrainsMono.variable,
-        resumeConfig.appTheme === ThemeSetting.Dark && 'dark',
-      )}
+      className={twMerge(albert.variable, jetBrainsMono.variable)}
     >
       <body className="bg-neutral-1 text-neutral-12 selection:bg-accent-11 selection:text-neutral-1">
         <Header />
