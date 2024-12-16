@@ -2,7 +2,7 @@ import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 import { useState, useEffect } from 'react';
 
 export default function DarkModeToggle() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const systemPrefersDark = window.matchMedia(
@@ -14,7 +14,7 @@ export default function DarkModeToggle() {
 
     setDarkMode(isDark);
 
-    document.documentElement.classList.toggle('dark', darkMode);
+    document.documentElement.classList.toggle('dark', isDark);
   }, []);
 
   const toggleDarkMode = () => {
