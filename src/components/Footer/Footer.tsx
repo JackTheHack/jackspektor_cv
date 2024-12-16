@@ -32,9 +32,11 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="mt-1 text-sm">
-          This résumé was made in {' '}<a className="link" href="https://cursor.com/">
+          This résumé was made in{' '}
+          <a className="link" href="https://cursor.com/">
             Cursor
-          </a>{' '} generated with{' '}
+          </a>{' '}
+          generated with{' '}
           <a className="link" href="https://nextjs.org/">
             Next.js
           </a>{' '}

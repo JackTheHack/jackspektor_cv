@@ -6,9 +6,11 @@ import {
   ChevronDownIcon,
   PhoneIcon,
   RssIcon,
+  SunIcon,
+  MoonIcon,
   PlayCircleIcon,
 } from '@heroicons/react/20/solid';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { fullName } from '../../helpers/utils';
 import { Heading } from '../Heading/Heading';
 import PDFDownloadButton from '../PDF/PDFDownloadButton';
@@ -30,6 +32,7 @@ import {
 import { DocumentIcon, AcademicCapIcon } from '@heroicons/react/24/outline';
 import { DivideIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 
 function TopMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -192,6 +195,7 @@ export const Header: React.FC<HeaderProps> = ({ secret }) => {
             </div>
           </div>
           <PDFDownloadButton secret={secret} />
+          <DarkModeToggle />
         </div>
         <TopMenu />
       </div>

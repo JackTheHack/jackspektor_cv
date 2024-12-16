@@ -28,7 +28,8 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
-  darkMode: resumeConfig.appTheme === ThemeSetting.System ? 'media' : 'class',
+  //darkMode: resumeConfig.appTheme === ThemeSetting.System ? 'media' : 'class',
+  darkMode: 'class',
   plugins: [
     colors.plugin,
     plugin(function ({ addVariant }) {
