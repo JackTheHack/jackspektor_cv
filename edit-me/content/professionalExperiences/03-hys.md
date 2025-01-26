@@ -1,6 +1,6 @@
 ---
 title: .Net Lead Developer
-organization: Some Nonprofit
+organization: HYS
 startDate: February 2013
 endDate: October 2014
 ---

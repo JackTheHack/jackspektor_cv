@@ -30,7 +30,6 @@ import {
 } from '@heroicons/react/16/solid';
 
 import { DocumentIcon, AcademicCapIcon } from '@heroicons/react/24/outline';
-import { DivideIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 
@@ -100,7 +99,7 @@ function TopMenu() {
                   className="cursor-pointer"
                 >
                   <div className="inline-flex items-center gap-1">
-                    <span className="underline decoration-blue-9 transition-colors duration-300 hover:decoration-white">
+                    <span className="underline decoration-blue-9 decoration-2 transition-colors duration-0 hover:decoration-white">
                       Expertise
                     </span>
                     <ChevronDownIcon
