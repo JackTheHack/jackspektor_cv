@@ -1,5 +1,5 @@
 ---
-title: .Net Lead Developer
+title: Lead .Net Developer
 organization: HYS
 startDate: February 2013
 endDate: October 2014
