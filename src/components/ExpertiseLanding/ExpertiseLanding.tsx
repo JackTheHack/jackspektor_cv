@@ -48,7 +48,7 @@ function ExpertiseCard({ card }: { card: ExpertiseCard }) {
 
   return (
     <Link
-      href={card.url}
+      href="#"
       className="block h-full text-inherit no-underline"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -88,7 +88,7 @@ function ExpertiseCard({ card }: { card: ExpertiseCard }) {
 
 export default function ExpertiseLanding() {
   return (
-    <section className="w-full bg-gray-100 px-12 py-6 md:py-8 lg:py-10 dark:bg-neutral-1">
+    <section className="w-full bg-gray-100 px-12 py-6 dark:bg-neutral-1 md:py-8 lg:py-10">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {expertiseCards.map((card, index) => (
           <div className="h-full" key={index}>
