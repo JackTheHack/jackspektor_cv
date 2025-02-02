@@ -48,7 +48,7 @@ function ExpertiseCard({ card }: { card: ExpertiseCard }) {
 
   return (
     <Link
-      href="#"
+      href={card.url}
       className="block h-full text-inherit no-underline"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

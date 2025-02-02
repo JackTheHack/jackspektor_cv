@@ -143,6 +143,88 @@ export const Achievement = defineDocumentType(() => ({
   },
 }));
 
+export const Expertise = defineDocumentType(() => ({
+  name: 'Expertise',
+  filePathPattern: 'expertise/*.md',
+  fields: {
+    title: {
+      type: 'string',
+      description: 'The name of expertise',
+      required: true,
+    },
+    slug: {
+      type: 'string',
+      description: 'Slug',
+      required: true,
+    },
+    caseStudy: {
+      type: 'string',
+      description: 'Relevant case study',
+      required: false,
+    },
+  },
+}));
+
+export const CaseStudy = defineDocumentType(() => ({
+  name: 'CaseStudy',
+  filePathPattern: 'caseStudies/*.md',
+  fields: {
+    title: {
+      type: 'string',
+      description: 'The name of case study',
+      required: true,
+    },
+    slug: {
+      type: 'string',
+      description: 'Slug',
+      required: true,
+    },
+    organization: {
+      type: 'string',
+      description: 'Case study organization',
+      required: true,
+    },
+    url: {
+      type: 'string',
+      description: 'Case study url',
+      required: false,
+    },
+    keywords: {
+      type: 'string',
+      description: 'Case study keywords',
+      required: false,
+    },
+    images: {
+      type: 'list',
+      of: { type: 'string' },
+      description: 'Array of image URLs related to the case study',
+      required: false,
+    },
+  },
+}));
+
+export const Testimonial = defineDocumentType(() => ({
+  name: 'Testimonial',
+  filePathPattern: 'testimonials/*.md',
+  fields: {
+    title: {
+      type: 'string',
+      description: 'The name of expertise',
+      required: true,
+    },
+    organization: {
+      type: 'string',
+      description: 'Description of person',
+      required: false,
+    },
+    name: {
+      type: 'string',
+      description: 'Person name',
+      required: false,
+    },
+  },
+}));
+
 export const AdditionalInfo = defineDocumentType(() => ({
   name: 'AdditionalInfo',
   filePathPattern: 'additionalInfo.md',
@@ -177,5 +259,8 @@ export default makeSource({
     Achievement,
     AdditionalInfo,
     PrivateField,
+    Testimonial,
+    CaseStudy,
+    Expertise,
   ],
 });
