@@ -390,7 +390,7 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
                 <Text>Professional Experience</Text>
               </View>
               {sortedProfessionalExperiences.map((professionalExperience) => (
-                <View key={professionalExperience._id} wrap={false}>
+                <View key={professionalExperience._id}>
                   <View style={styles.itemHeading}>
                     <Text style={styles.professionalTitle}>
                       {professionalExperience.title}
